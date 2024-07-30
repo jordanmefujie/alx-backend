@@ -32,4 +32,134 @@ Copy the dump.rdb from the redis-5.0.7 directory into the root of the Queuing pr
 
 Requirements:
 
-Running get Holberton in the client, should return School
+Running get Holberton in the client, should return School.
+
+2. Node Redis client and basic operations
+mandatory
+In a file 1-redis_op.js, copy the code you previously wrote (0-redis_client.js).
+
+Add two functions:
+
+setNewSchool:
+It accepts two arguments schoolName, and value.
+It should set in Redis the value for the key schoolName
+It should display a confirmation message using redis.print
+displaySchoolValue:
+It accepts one argument schoolName.
+It should log to the console the value for the key passed as argument
+At the end of the file, call:
+
+displaySchoolValue('Holberton');
+setNewSchool('HolbertonSanFrancisco', '100');
+displaySchoolValue('HolbertonSanFrancisco');
+Requirements:
+
+Use callbacks for any of the operation, we will look at async operations later
+bob@dylan:~$ npm run dev 1-redis_op.js 
+
+> queuing_system_in_js@1.0.0 dev /root
+> nodemon --exec babel-node --presets @babel/preset-env "1-redis_op.js"
+
+[nodemon] 2.0.4
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `babel-node --presets @babel/preset-env 1-redis_op.js`
+Redis client connected to the server
+School
+Reply: OK
+100
+^C
+
+bob@dylan:~$
+Repo:
+
+GitHub repository: alx-backend
+Directory: 0x03-queuing_system_in_js
+File: 1-redis_op.js
+
+3. Node Redis client and async operations
+mandatory
+In a file 2-redis_op_async.js, let’s copy the code from the previous exercise (1-redis_op.js)
+
+Using promisify, modify the function displaySchoolValue to use ES6 async / await
+
+Same result as 1-redis_op.js
+
+bob@dylan:~$ npm run dev 2-redis_op_async.js
+
+> queuing_system_in_js@1.0.0 dev /root
+> nodemon --exec babel-node --presets @babel/preset-env "2-redis_op_async.js"
+
+[nodemon] 2.0.4
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `babel-node --presets @babel/preset-env 2-redis_op_async.js`
+Redis client connected to the server
+School
+Reply: OK
+100
+^C
+
+bob@dylan:~$
+Repo:
+
+GitHub repository: alx-backend
+Directory: 0x03-queuing_system_in_js
+File: 2-redis_op_async.js
+
+4. Node Redis client and advanced operations
+mandatory
+In a file named 4-redis_advanced_op.js, let’s use the client to store a hash value
+
+Create Hash:
+Using hset, let’s store the following:
+
+The key of the hash should be HolbertonSchools
+It should have a value for:
+Portland=50
+Seattle=80
+New York=20
+Bogota=20
+Cali=40
+Paris=2
+Make sure you use redis.print for each hset
+Display Hash:
+Using hgetall, display the object stored in Redis. It should return the following:
+
+Requirements:
+
+Use callbacks for any of the operation, we will look at async operations later
+bob@dylan:~$ npm run dev 4-redis_advanced_op.js 
+
+> queuing_system_in_js@1.0.0 dev /root
+> nodemon --exec babel-node --presets @babel/preset-env "4-redis_advanced_op.js"
+
+[nodemon] 2.0.4
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `babel-node --presets @babel/preset-env 4-redis_advanced_op.js`
+Redis client connected to the server
+Reply: 1
+Reply: 1
+Reply: 1
+Reply: 1
+Reply: 1
+Reply: 1
+{
+  Portland: '50',
+  Seattle: '80',
+  'New York': '20',
+  Bogota: '20',
+  Cali: '40',
+  Paris: '2'
+}
+^C
+bob@dylan:~$
+Repo:
+
+GitHub repository: alx-backend
+Directory: 0x03-queuing_system_in_js
+File: 4-redis_advanced_op.js
